@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    This Post Title
+{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post-detail.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+    <section id="summary">
+        <h2>Post Title</h2>
+        <article>
+            <img src="{% static "blog/images/mountains.jpg" %}" alt="Post Title">
+            <address>By Luke</address>
+            <div>
+                Last updated on: <time>July 10th</time>
+            </div>
+        </article>
+
+        <main>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde enim officia, tenetur vitae fuga tempora numquam cupiditate, adipisci amet eveniet maiores voluptatum dolore eaque nostrum laboriosam culpa voluptate quod.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quam sequi possimus et repudiandae magnam deserunt exercitationem tenetur soluta quidem nihil, quisquam ex nobis quia illum eius voluptatem necessitatibus placeat
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde enim officia, tenetur vitae fuga tempora numquam cupiditate, adipisci amet eveniet maiores voluptatum dolore eaque nostrum laboriosam culpa voluptate quod.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quam sequi possimus et repudiandae magnam deserunt exercitationem tenetur soluta quidem nihil, quisquam ex nobis quia illum eius voluptatem necessitatibus placeat
+            </p>
+        </main>
+
+    </section>
+{% endblock content %}
