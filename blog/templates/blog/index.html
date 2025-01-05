@@ -9,36 +9,17 @@
 {% endblock css_files %}
 
 {% block content %}
-    <header id="main-navigation">
-        <h1>
-            <a href="">Luke' Blog</a>
-        </h1>
-        <nav>
-            <h1>
-                <a href="">All Posts</a>
-            </h1>
-        </nav>
-    </header>
     <section id="welcome">
         <header>
-            <img src="" alt="Luke - Author of the blog" />
+            <img src="{% static "blog/images/max.png" %}"
+                 alt="Luke - Author of the blog" />
             <h2>Luke's Blog</h2>
         </header>
     </section>
     <section id="latest-posts">
         <h2>My Latest Thoughts</h2>
         <ul>
-            <li>
-                <article class="post">
-                    <a href="">
-                        <img src="" alt="Mountain Hiking" />
-                        <div class="post__content">
-                            <h3>Mountain Hiking</h3>
-                            <p>There is nothing like the views that you get whilst you are out in the mountains</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
+            {% include "blog/includes/post.html" %}
         </ul>
     </section>
     <section id="about">
