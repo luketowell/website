@@ -81,7 +81,11 @@ def homepage(request):
         })
 
 def posts(request):
-    return render(request, "blog/all-posts.html")
+    return render(request, "blog/all-posts.html", {"posts": all_posts})
 
 def single_post(request, slug):
-    return render(request, "blog/post-detail.html")
+    identified_post = next(post for post in all_posts if post['slug'] == slug)
+
+    return render(request, "blog/post-detail.html", {
+        "post": identified_post
+    } )
