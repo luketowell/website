@@ -13,8 +13,8 @@ class Tag(models.Model):
         verbose_name_plural = "Tags"
 
 class Author(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email_address = models.EmailField(max_length=255)
 
     def full_name(self):
@@ -31,7 +31,7 @@ class Post(models.Model):
     image_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True db_index = True)
     content = models.TextField(validators=[MinLengthValidator(10)])
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="posts")
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name="posts")
     tags = models.ManyToManyField(Tag)
 
     def save(self, *args, **kwargs):
