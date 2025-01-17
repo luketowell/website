@@ -4,7 +4,7 @@ from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class Tag(models.Model):
-    caption = models.CharField(150)
+    caption = models.CharField(max_length=150)
 
     def __str__(self):
         return self.caption()
@@ -29,7 +29,7 @@ class Post(models.Model):
     date = models.DateField(auto_now=True)
     excerpt = models.CharField(max_length=200)
     image_name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True db_index = True)
+    slug = models.SlugField(unique=True, db_index = True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name="posts")
     tags = models.ManyToManyField(Tag)
