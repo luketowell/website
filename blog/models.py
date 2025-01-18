@@ -7,7 +7,7 @@ class Tag(models.Model):
     caption = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.caption()
+        return self.caption
 
     class Meta:
         verbose_name_plural = "Tags"
@@ -36,7 +36,7 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        super.save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.slug} - {self.title} (Published on: {self.date})"
