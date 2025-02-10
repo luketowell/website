@@ -26,7 +26,14 @@
 
         <main>
             {{ post.content|linebreaks }}
+
         </main>
 
+        <div>
+            <form>
+                {{ comment_form }}
+            </form>
+            <button>Submit Comment</button>
+        </div
     </section>
 {% endblock content %}
