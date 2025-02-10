@@ -1,6 +1,6 @@
 from datetime import date
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Post
 
@@ -21,17 +21,13 @@ class AllPostView(ListView):
     model = Post
     ordering = ["-date"]
     context_object_name = "posts"
-        
-# sort function
-def get_date(post):
-    return post['date']
 
-def single_post(request, slug):
+class SinglePostView(DetailView):
+    template_name = "blog/post-detail.html"
+    model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["post_tags"] = self.object.tags.all()
 
-    identified_post = Post.objects.get(slug = slug)
-
-    return render(request, "blog/post-detail.html", {
-        "post": identified_post,
-        "post_tags": identified_post.tags.all() 
-    } )
+        return context
