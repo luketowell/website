@@ -1,23 +1,27 @@
 from datetime import date
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from .models import Post
 
 
+class HomePageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    ordering = ["-date"]
+    context_object_name = "posts"
 
-
-
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = queryset[:3]
+        return data
+        
 # sort function
 def get_date(post):
     return post['date']
 
 
-# Create your views here.
-def homepage(request):
-    latest_posts = Post.objects.all().order_by('-date')[:3]
-    return render(request, "blog/index.html", {
-        "posts":latest_posts
-        })
+
 
 def posts(request):
     all_posts = Post.objects.all()
