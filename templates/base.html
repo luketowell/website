@@ -19,9 +19,8 @@
         <a href="{% url "homepage" %}">Luke' Blog</a>
       </h1>
       <nav>
-        <h1>
-          <a href="{% url "posts" %}">All Posts</a>
-        </h1>
+        <a href="{% url "posts" %}">All Posts</a>
+        <a href="{% url "read-later" %}">Stored Posts</a>
       </nav>
     </header>
     {% block content %}
